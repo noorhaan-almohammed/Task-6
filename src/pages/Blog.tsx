@@ -16,13 +16,26 @@ function Blog() {
   return (
     <div className="mt-16 2xl:mt-24 3xl:mt-28 flex flex-col 2xl:grid 2xl:grid-cols-[342px_1fr] gap-4 3xl:gap-8">
       <section className="space-y-8 flex flex-col 2xl:order-1 order-2 col-span-1">
-        <h2 className=" text-2xl font-semibold text-[#1A1A1A] dark:text-white">
+        <h2
+          className="text-2xl font-semibold text-[#1A1A1A] dark:text-white"
+          data-aos="fade-up"
+          data-aos-delay="0"
+        >
           Recent blog posts
         </h2>
-        {currentBlogs.map((blog) => (
-          <Card key={blog.id} cover={blog.coverImage} {...blog} col={1} />
+
+        {currentBlogs.map((blog, index) => (
+          <div
+            key={blog.id}
+            data-aos="fade-right"
+            data-aos-delay={index * 150}
+            data-aos-offset="100"
+          >
+            <Card cover={blog.coverImage} {...blog} col={1} />
+          </div>
         ))}
       </section>
+
       <section className="2xl:order-2 order-1">
         <Outlet />
       </section>

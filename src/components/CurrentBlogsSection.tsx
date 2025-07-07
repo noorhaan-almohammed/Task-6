@@ -25,9 +25,13 @@ const CurrentBlogsSection = () => {
 
   return (
     <SectionCountainer title="Recent blog Blogs">
-      {recentBlogCards.length == 4 && (
+      {recentBlogCards.length === 4 && (
         <div className="3xl:grid-cols-2 grid grid-cols-1 gap-8">
-          <div className="3xl:col-span-1 col-span-full">
+          <div
+            className="3xl:col-span-1 col-span-full"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             <Card
               id={recentBlogCards[0].id}
               key={recentBlogCards[0].id}
@@ -43,22 +47,31 @@ const CurrentBlogsSection = () => {
           </div>
 
           <div className="3xl:col-span-1 col-span-full grid gap-8">
-            {recentBlogCards.slice(1, 3).map((blog) => (
-              <Card
-                id={blog.id}
+            {recentBlogCards.slice(1, 3).map((blog, index) => (
+              <div
                 key={blog.id}
-                author={blog.author}
-                summary={blog.summary}
-                cover={blog.cover}
-                date={blog.date}
-                title={blog.title}
-                categories={blog.categories}
-                col={2}
-              />
+                data-aos="fade-up"
+                data-aos-delay={200 + index * 100}
+              >
+                <Card
+                  id={blog.id}
+                  author={blog.author}
+                  summary={blog.summary}
+                  cover={blog.cover}
+                  date={blog.date}
+                  title={blog.title}
+                  categories={blog.categories}
+                  col={2}
+                />
+              </div>
             ))}
           </div>
 
-          <div className="3xl:col-span-2 3xl:flex hidden">
+          <div
+            className="3xl:col-span-2 3xl:flex hidden"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+          >
             <Card
               id={recentBlogCards[3].id}
               key={recentBlogCards[3].id}
@@ -72,8 +85,11 @@ const CurrentBlogsSection = () => {
               className="3xl:aspect-[2.4]"
             />
           </div>
-
-          <div className="3xl:hidden col-span-full">
+          <div
+            className="3xl:hidden col-span-full"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
             <Card
               id={recentBlogCards[3].id}
               key={recentBlogCards[3].id}

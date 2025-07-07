@@ -20,6 +20,7 @@ const generatePageNumbers = (
   if (currentPage >= totalPages - 2) {
     return [1, 2, 3, "...", totalPages - 2, totalPages - 1, totalPages];
   }
+
   return [
     currentPage - 2,
     currentPage - 1,
@@ -45,14 +46,28 @@ const AllBlogs = () => {
   const pageNumbers = generatePageNumbers(currentPage, totalPages);
 
   return (
-    <SectionCountainer title=" All Blog Posts">
+    <SectionCountainer title="All Blog Posts">
+      {/* البطاقات */}
       <div className="mb-[30px] grid gap-6 2xl:grid-cols-2 3xl:grid-cols-3">
-        {currentBlogs.map((blog) => (
-          <Card key={blog.id} cover={blog.coverImage} {...blog} col={1} />
+        {currentBlogs.map((blog, index) => (
+          <div
+            key={blog.id}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+            data-aos-duration="600"
+          >
+            <Card cover={blog.coverImage} {...blog} col={1} />
+          </div>
         ))}
       </div>
 
-      <div className="flex justify-between items-center py-5 border-t-[1px] border-b-[1px] 2xl:border-b-0  border-[#EAECF0] dark:border-[#EAECF057] flex-col 2xl:flex-row">
+      {/* ترقيم الصفحات */}
+      <div
+        className="flex justify-between items-center py-5 border-t-[1px] border-b-[1px] 2xl:border-b-0 border-[#EAECF0] dark:border-[#EAECF057] flex-col 2xl:flex-row"
+        data-aos="fade"
+        data-aos-delay="200"
+      >
+        {/* زر السابق */}
         <button
           disabled={currentPage === 1}
           onClick={() => dispatch(getBlogsByPage(currentPage - 1))}
@@ -61,6 +76,8 @@ const AllBlogs = () => {
               ? "text-gray-400 cursor-not-allowed opacity-50"
               : "cursor-pointer"
           }`}
+          data-aos="fade-right"
+          data-aos-delay="200"
         >
           <img
             src={
@@ -76,7 +93,12 @@ const AllBlogs = () => {
           Previous
         </button>
 
-        <div className="flex items-center mt-5 2xl:mt-0">
+        {/* أرقام الصفحات */}
+        <div
+          className="flex items-center mt-5 2xl:mt-0"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
           {pageNumbers.map((page, idx) =>
             page === "..." ? (
               <span
@@ -101,6 +123,7 @@ const AllBlogs = () => {
           )}
         </div>
 
+        {/* زر التالي */}
         <button
           disabled={currentPage === totalPages}
           onClick={() => dispatch(getBlogsByPage(currentPage + 1))}
@@ -109,6 +132,8 @@ const AllBlogs = () => {
               ? "text-gray-400 opacity-50 cursor-not-allowed"
               : "cursor-pointer"
           }`}
+          data-aos="fade-left"
+          data-aos-delay="200"
         >
           Next
           <img

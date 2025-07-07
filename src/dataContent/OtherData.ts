@@ -67,3 +67,29 @@ export const team : Array< teamType > = [
   {image: "/mem.jpg", name:"Layla Mansour", position:"Community Manager" },
   {image: "/mem.jpg", name:"Khaled Ahmad", position:"Backend Developer" },
 ]
+export const feeds = [
+  {
+    index: "1",
+    name: "Huda K",
+    content:
+      "One of the best content platforms I've come across. Beautiful design and quality writing.",
+  },
+  {
+    index: "2",
+    name: "Youssef A",
+    content:
+      "I visit this site almost daily. The articles are always fresh, insightful, and useful..",
+  },
+  {
+    index: "3",
+    name: "Huda K",
+    content:
+      "One of the best content platforms I've come across. Beautiful design and quality writing.",
+  },
+  {
+    index: "4",
+    name: "Youssef A",
+    content:
+      "I visit this site almost daily. The articles are always fresh, insightful, and useful..",
+  },
+];
