@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import type { CardType, State } from "../type/type";
 import { Link } from "react-router";
 import { categoriesColor } from "../dataContent/OtherData";
+import Category from "./Category";
 
 const Card = ({
   id,
@@ -38,9 +39,9 @@ const Card = ({
 
           <Link
             to={`/blog/detail/${id}`}
-            className="flex w-full transition-colors duration-300 group-hover:text-primary"
+            className="flex w-full"
           >
-            <p className="text-2xl font-semibold dark:text-white transition-colors duration-300 group-hover:text-primary">
+            <p className="text-2xl font-semibold dark:text-white">
               {title}
             </p>
             <img
@@ -50,7 +51,7 @@ const Card = ({
                   ? "/icons/light-up-arrow.svg"
                   : "/icons/dark-up-arraw.svg"
               }
-              className=" ml-auto transition-transform duration-300 group-hover:-translate-y-1"
+              className="size-4 ml-auto transition-transform duration-300 group-hover:-translate-y-1"
             />
           </Link>
 
@@ -64,14 +65,7 @@ const Card = ({
             {categories.map((item, index) => {
               const style = categoriesColor.find((cat) => cat.name === item);
               return (
-                <div
-                  key={index}
-                  className={`rounded-2xl px-2.5 py-0.5 text-sm font-medium 
-                    ${style?.background || "bg-gray-200"} 
-                    ${style?.text || "text-gray-900"}`}
-                >
-                  {item}
-                </div>
+                <Category key={index} item={item} bg={style?.background} text={style?.text}/>
               );
             })}
           </div>

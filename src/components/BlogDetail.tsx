@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router";
 import { useEffect } from "react";
 import { getBlogById } from "../redux/slice";
 import { categoriesColor } from "../dataContent/OtherData";
+import Category from "./Category";
 
 const BlogDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -118,18 +119,11 @@ const BlogDetail = () => {
       <footer className="mb-16 2xl:mb-0">
         <div className=" flex gap-2 flex-wrap">
           {blog.categories.map((item, index) => {
-            const style = categoriesColor.find((cat) => cat.name === item);
-            return (
-              <span
-                key={index}
-                className={`rounded-2xl px-2.5 py-0.5 text-sm font-medium
-                    ${style?.background || "bg-gray-100"} 
-                    ${style?.text || "text-gray-800"}`}
-              >
-                {item}
-              </span>
-            );
-          })}
+              const style = categoriesColor.find((cat) => cat.name === item);
+              return (
+                <Category key={index} item={item} bg={style?.background} text={style?.text}/>
+              );
+            })}
         </div>
       </footer>
     </article>

@@ -1,4 +1,4 @@
-import type { FooterType, NavBarType, projectType } from "../type/type";
+import type { FooterType, NavBarType, projectType, teamType } from "../type/type";
 
 export const categoriesColor = [
   { name: "Design", background: "bg-[#F9F5FF]", text: "text-[#6941C6]" },
@@ -60,3 +60,10 @@ export const projects : Array< projectType > = [
       link: "#",
     },
   ];
+
+export const team : Array< teamType > = [
+  {image: "/mem.jpg", name:"Sarah Ahmad", position:"Editor UI/UX" },
+  {image: "/mem.jpg", name:"Omar Elbaz", position:"Front end Developer" },
+  {image: "/mem.jpg", name:"Layla Mansour", position:"Community Manager" },
+  {image: "/mem.jpg", name:"Khaled Ahmad", position:"Backend Developer" },
+]

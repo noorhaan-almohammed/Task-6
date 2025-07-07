@@ -75,6 +75,7 @@ export interface FooterType {
   link: string;
   content: string;
 }
+export interface teamType {image:string;name:string;position:string;}
 export interface projectType {title: string, description: string, image: string,link: string}
 export type State = ReturnType<typeof store.getState>;
 export type Dispatch = typeof store.dispatch;
